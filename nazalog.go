@@ -1,4 +1,4 @@
-package gologger_nazalog
+package nazalog
 
 import (
 	logger "github.com/kordar/gologger"

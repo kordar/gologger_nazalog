@@ -1,6 +1,5 @@
-https://github.com/q191201771/naza
+package nazalog
 
-```go
 import (
 	logger "github.com/kordar/gologger"
 	"github.com/q191201771/naza/pkg/nazalog"
@@ -22,4 +21,3 @@ func TestT22(t *testing.T) {
 	InitLogger()
 	logger.Infof("this is info!")
 }
-```
