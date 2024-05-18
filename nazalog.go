@@ -1,4 +1,4 @@
-package nazalog
+package gologger_nazalog
 
 import (
 	logger "github.com/kordar/gologger"
@@ -7,6 +7,20 @@ import (
 
 type nazalogAdapt struct {
 	l nazalog.Logger
+}
+
+func Init001(filename string) {
+	_ = nazalog.Init(func(option *nazalog.Option) {
+		option.Level = nazalog.LevelInfo
+		if filename == "" {
+			option.Filename = "./logs/naza.log"
+		} else {
+			option.Filename = filename
+		}
+		option.IsRotateDaily = true
+		option.LevelFlag = true
+	})
+	defer nazalog.Sync()
 }
 
 func NewNazalogAdapt() logger.Logger {

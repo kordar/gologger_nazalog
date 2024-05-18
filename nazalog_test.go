@@ -1,7 +1,8 @@
-package nazalog
+package gologger_nazalog_test
 
 import (
 	logger "github.com/kordar/gologger"
+	"github.com/kordar/gologger_nazalog"
 	"github.com/q191201771/naza/pkg/nazalog"
 	"testing"
 )
@@ -14,7 +15,7 @@ func InitLogger() {
 		option.LevelFlag = true
 	})
 	defer nazalog.Sync()
-	logger.InitGlobal(NewNazalogAdapt())
+	logger.InitGlobal(gologger_nazalog.NewNazalogAdapt())
 }
 
 func TestT22(t *testing.T) {
