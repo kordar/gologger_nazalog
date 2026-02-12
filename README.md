@@ -1,28 +1,34 @@
-# gologger_nazalog
+# gologger-nazalog
 
-包装`nazalog`对象，实现[日志门面](https://github.com/kordar/gologger)接口
+A [nazalog](https://github.com/q191201771/naza/tree/master/pkg/nazalog) adapter for [gologger](https://github.com/kordar/gologger).
 
-## 安装
+## Installation
 
-```go
-go get github.com/kordar/gologger_nazalog v1.0.2
+```bash
+go get github.com/kordar/gologger_nazalog
 ```
 
-## 初始化
+## Usage
 
 ```go
+package main
+
 import (
-    logger "github.com/kordar/gologger"
-    "github.com/kordar/gologger_nazalog"
-    "github.com/q191201771/naza/pkg/nazalog"
+	"github.com/kordar/gologger"
+	"github.com/kordar/gologger_nazalog"
 )
 
-_ = nazalog.Init(func(option *nazalog.Option) {
-		option.Level = nazalog.LevelInfo
-		option.Filename = "./logs/progress.log"
-		option.IsRotateDaily = true
-		option.LevelFlag = true
-	})
-defer nazalog.Sync()
-logger.InitGlobal(gologger_nazalog.NewNazalogAdapt())
+func main() {
+	// Optional: Initialize nazalog with a filename (or empty for default ./logs/naza.log)
+	gologger_nazalog.Init001("app.log")
+	
+	// Create the adapter
+	adapter := gologger_nazalog.NewNazalogAdapt()
+	
+	// Initialize gologger with the adapter
+	logger.InitGlobal(adapter)
+	
+	// Use gologger
+	logger.Info("This message is logged via nazalog")
+}
 ```
