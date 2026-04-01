@@ -1,8 +1,5 @@
 module github.com/kordar/gologger_nazalog
 
-go 1.16
+go 1.21
 
-require (
-	github.com/kordar/gologger v0.0.8
-	github.com/q191201771/naza v0.30.48
-)
+require github.com/q191201771/naza v0.30.48
